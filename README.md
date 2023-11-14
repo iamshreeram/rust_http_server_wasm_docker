@@ -21,3 +21,14 @@ However, `wasmedge` supports sockets and was able to successfully run the http s
 ```
 wasmedge ./target/wasm32-wasi/release/http_server.wasm
 ```
+
+
+#### Dockerizing the wasm http_server
+Since `containerd` doesn't support wasm, Docker provides an option to build a wasm container by adding WASI platform support. To build the container with wasm support, use the command below:
+
+Building the container - 
+```
+docker buildx build --platform wasi/wasm --provenance=false -t http_server-wasm:latest .
+```
+
+
